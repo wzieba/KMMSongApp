@@ -14,12 +14,14 @@ import androidx.lifecycle.asLiveData
 import com.github.wzieba.songapp.androidApp.ui.songs.component.SongItem
 import com.github.wzieba.songapp.domain.ObserveSongs
 import com.github.wzieba.songapp.domain.Song
+import kotlinx.coroutines.flow.map
 
 @Composable
 fun SongsScreen(
     observeSongs: ObserveSongs,
 ) {
-    val songs: List<Song> by observeSongs.invoke().asLiveData().observeAsState(emptyList())
+    val songs: List<Song> by observeSongs.invoke().map { result -> result.songs }.asLiveData()
+        .observeAsState(emptyList())
     LazyColumnForIndexed(items = songs, contentPadding = PaddingValues(8.dp)) { position, song ->
         Column {
             SongItem(song = song)

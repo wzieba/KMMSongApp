@@ -22,8 +22,8 @@ fun SongItem(modifier: Modifier = Modifier, song: Song) {
                 .wrapContentHeight()
                 .padding(8.dp)
         ) {
-            Text(text = song.artistName, style = MaterialTheme.typography.h5)
-            Text(text = song.name, style = MaterialTheme.typography.body2)
+            Text(text = song.name, style = MaterialTheme.typography.h5)
+            Text(text = song.artistName, style = MaterialTheme.typography.body2)
             Text(text = song.releaseYear, style = MaterialTheme.typography.caption)
         }
     }

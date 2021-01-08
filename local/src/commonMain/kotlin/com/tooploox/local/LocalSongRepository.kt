@@ -19,15 +19,10 @@ class LocalSongRepository(
     override val type = SongSource.LOCAL
 
     override fun observeSongs() = flow {
-        emit(fileProvider.provideFile())
-    }.mapLatest { byteArray ->
-        val rawJsonString = byteArray.decodeToString()
+        emit(fileProvider.provideTextFile())
+    }.mapLatest { rawJsonString ->
 
-        val localSongs = try {
-            json.decodeFromString<List<LocalSong>>(rawJsonString)
-        } catch (exception: SerializationException) {
-            emptyList()
-        }
+        val localSongs = json.decodeFromString<List<LocalSong>>(rawJsonString)
 
         localSongs.mapNotNull { (title, artistName, releaseYear) ->
             if (title == null || artistName == null || releaseYear == null) {

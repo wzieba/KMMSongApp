@@ -2,9 +2,11 @@ package com.tooploox.local
 
 import com.github.wzieba.songapp.domain.Song
 import kotlinx.coroutines.flow.collect
+import kotlinx.serialization.SerializationException
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.asserter
+import kotlin.runCatching
 
 internal class LocalSongRepositoryTest {
 
@@ -16,7 +18,7 @@ internal class LocalSongRepositoryTest {
     fun setUp() {
         sut = LocalSongRepository(
             fileProvider = object : FileProvider {
-                override fun provideFile() = havingJson.encodeToByteArray()
+                override fun provideTextFile() = havingJson
             },
             json = songJson,
             contextFacade = TestCoroutinesContextFacade
@@ -40,35 +42,35 @@ internal class LocalSongRepositoryTest {
     fun shouldNotDeserializeWhenTitleIsEmpty() = runBlockingTest {
         havingJson = noTitle
 
-        sut.observeSongs().collect { collectedSongs ->
-            asserter.assertTrue(
-                message = "Songs should be empty",
-                actual = collectedSongs.isEmpty()
-            )
-        }
+        val result = runCatching { sut.observeSongs().collect() }
+
+        asserter.assertTrue(
+            "Exception should be thrown",
+            result.exceptionOrNull() is SerializationException
+        )
     }
 
     @Test
     fun shouldNotDeserializeWhenArtistNameIsEmpty() = runBlockingTest {
         havingJson = noArtistName
 
-        sut.observeSongs().collect { collectedSongs ->
-            asserter.assertTrue(
-                message = "Songs should be empty",
-                actual = collectedSongs.isEmpty()
-            )
-        }
+        val result = kotlin.runCatching { sut.observeSongs().collect() }
+
+        asserter.assertTrue(
+            "Exception should be thrown",
+            result.exceptionOrNull() is SerializationException
+        )
     }
 
     @Test
     fun shouldNotDeserializeWhenReleaseYearIsEmpty() = runBlockingTest {
         havingJson = noReleaseYear
 
-        sut.observeSongs().collect { collectedSongs ->
-            asserter.assertTrue(
-                message = "Songs should be empty",
-                actual = collectedSongs.isEmpty()
-            )
-        }
+        val result = kotlin.runCatching { sut.observeSongs().collect() }
+
+        asserter.assertTrue(
+            "Exception should be thrown",
+            result.exceptionOrNull() is SerializationException
+        )
     }
 }
