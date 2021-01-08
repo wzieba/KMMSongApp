@@ -32,7 +32,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation("org.kodein.di:kodein-di:7.1.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9-native-mt")
             }
         }
         val commonTest by getting {

@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../local/src/commonMain">
+   </FileRef>
+   <FileRef
+      location = "group:../../local/src/iosMain">
+   </FileRef>
+   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>

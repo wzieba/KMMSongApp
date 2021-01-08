@@ -17,6 +17,9 @@
 		7555FFA1242A565B00829871 /* iosAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FFA0242A565B00829871 /* iosAppUITests.swift */; };
 		7555FFB2242A642300829871 /* domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7555FFB1242A642300829871 /* domain.framework */; };
 		7555FFB3242A642300829871 /* domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7555FFB1242A642300829871 /* domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5CA30C125B36B5A00E54D12 /* commonMain in Resources */ = {isa = PBXBuildFile; fileRef = B5CA30C025B36B5A00E54D12 /* commonMain */; };
+		B5CA30D825B371EB00E54D12 /* local.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5CA30D725B371EB00E54D12 /* local.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5CA30E025B391A100E54D12 /* songs-list.json in Resources */ = {isa = PBXBuildFile; fileRef = B5CA30DF25B391A100E54D12 /* songs-list.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B5CA30D825B371EB00E54D12 /* local.framework in Embed Frameworks */,
 				7555FFB3242A642300829871 /* domain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -66,6 +70,11 @@
 		7555FFA0242A565B00829871 /* iosAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosAppUITests.swift; sourceTree = "<group>"; };
 		7555FFA2242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7555FFB1242A642300829871 /* domain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = domain.framework; path = "../domain/build/xcode-frameworks/domain.framework"; sourceTree = "<group>"; };
+		B5CA30C025B36B5A00E54D12 /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../domain/src/commonMain; sourceTree = "<group>"; };
+		B5CA30CE25B371C400E54D12 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		B5CA30D125B371DA00E54D12 /* xcode-frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "xcode-frameworks"; path = "../local/build/xcode-frameworks"; sourceTree = "<group>"; };
+		B5CA30D725B371EB00E54D12 /* local.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = local.framework; path = "../local/build/xcode-frameworks/local.framework"; sourceTree = "<group>"; };
+		B5CA30DF25B391A100E54D12 /* songs-list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "songs-list.json"; path = "iosApp/songs-list.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +106,11 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				B5CA30DF25B391A100E54D12 /* songs-list.json */,
+				B5CA30D725B371EB00E54D12 /* local.framework */,
+				B5CA30D125B371DA00E54D12 /* xcode-frameworks */,
+				B5CA30CE25B371C400E54D12 /* iosApp.xcodeproj */,
+				B5CA30C025B36B5A00E54D12 /* commonMain */,
 				7555FF7D242A565900829871 /* iosApp */,
 				7555FF94242A565B00829871 /* iosAppTests */,
 				7555FF9F242A565B00829871 /* iosAppUITests */,
@@ -161,6 +175,11 @@
 				7555FFB1242A642300829871 /* domain.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B5CA30CF25B371C400E54D12 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +274,12 @@
 			mainGroup = 7555FF72242A565900829871;
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B5CA30CF25B371C400E54D12 /* Products */;
+					ProjectRef = B5CA30CE25B371C400E54D12 /* iosApp.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				7555FF7A242A565900829871 /* iosApp */,
@@ -269,7 +294,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5CA30C125B36B5A00E54D12 /* commonMain in Resources */,
 				7555FF8B242A565B00829871 /* LaunchScreen.storyboard in Resources */,
+				B5CA30E025B391A100E54D12 /* songs-list.json in Resources */,
 				7555FF88242A565B00829871 /* Preview Assets.xcassets in Resources */,
 				7555FF85242A565B00829871 /* Assets.xcassets in Resources */,
 			);
@@ -307,7 +334,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :domain:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
+			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :domain:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n./gradlew :local:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -415,7 +442,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -469,7 +496,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -486,7 +513,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../domain/build/xcode-frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../domain/build/xcode-frameworks",
+					"$(SRCROOT)/../local/build/xcode-frameworks",
+				);
 				INFOPLIST_FILE = iosApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -506,7 +536,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../domain/build/xcode-frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../domain/build/xcode-frameworks",
+					"$(SRCROOT)/../local/build/xcode-frameworks",
+				);
 				INFOPLIST_FILE = iosApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -526,7 +559,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = iosAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -547,7 +580,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = iosAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
