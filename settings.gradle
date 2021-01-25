@@ -1,0 +1,12 @@
+pluginManagement {
+    apply from: 'dependencies.gradle'
+    plugins {
+        id 'org.jetbrains.kotlin.plugin.serialization' version "${versions.kotlin}"
+    }
+}
+
+rootProject.name = "SongApp"
+
+include(":androidApp")
+include(":domain")
+include(":local")
