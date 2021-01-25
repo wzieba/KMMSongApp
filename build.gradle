@@ -1,0 +1,2 @@
+//This makes Dependabot trigger check on dependencies.gradle file
+apply from: "dependencies.gradle"

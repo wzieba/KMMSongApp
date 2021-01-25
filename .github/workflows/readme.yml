@@ -12,6 +12,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: wagoid/commitlint-github-action@v2
+        if: ${{ github.event.pusher.name != 'dependabot[bot]' }}
 
   android:
     needs: commitlint

@@ -4,15 +4,15 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
 }
-group = "com.github.wzieba.songapp"
-version = "1.0-SNAPSHOT"
 
 repositories {
-    gradlePluginPortal()
     google()
     jcenter()
     mavenCentral()
 }
+
+apply(from = "../dependencies.gradle")
+
 kotlin {
     android {
         tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -31,16 +31,20 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.kodein.di:kodein-di:7.1.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9-native-mt")
+                implementation(deps.getValue("kodein"))
+                implementation(deps.getValue("coroutinesCore"))
             }
         }
-        val commonTest by getting {
+        val commonTest by getting
+        val androidMain by getting
+        val androidTest by getting
+        val iosMain by getting {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
         }
+        val iosTest by getting
     }
 }
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
@@ -58,7 +62,8 @@ val packForXcode by tasks.creating(Sync::class) {
     val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
     val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
     val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
-    val framework = kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
+    val framework =
+        kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
     inputs.property("mode", mode)
     dependsOn(framework.linkTask)
     val targetDir = File(buildDir, "xcode-frameworks")

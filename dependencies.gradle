@@ -1,0 +1,32 @@
+ext.versions = [
+        compose   : "1.0.0-alpha07",
+        coroutines: "1.4.1-native-mt",
+        junit     : "4.13.1",
+        kodein    : "7.1.0",
+        kotlin    : "1.4.21",
+        lifecycle : "2.2.0",
+]
+
+ext.libraries = [
+        agp              : "com.android.tools.build:gradle:4.2.0-beta03",
+        appcompat        : "androidx.appcompat:appcompat:1.2.0",
+        composeFoundation: "androidx.compose.foundation:foundation:$versions.compose",
+        composeLayout    : "androidx.compose.foundation:foundation-layout:$versions.compose",
+        composeLivedata  : "androidx.compose.runtime:runtime-livedata:$versions.compose",
+        composeMaterial  : "androidx.compose.material:material:$versions.compose",
+        composeUi        : "androidx.compose.ui:ui:$versions.compose",
+        constraintLayout : "androidx.constraintlayout:constraintlayout:2.0.3",
+        coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines",
+        coroutinesCommon : "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$versions.coroutines",
+        coroutinesCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+        junit            : "junit:junit:$versions.junit",
+        kgp              : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+        kodein           : "org.kodein.di:kodein-di:$versions.kodein",
+        kodeinAndroid    : "org.kodein.di:kodein-di-framework-android-x:$versions.kodein",
+        ktx              : "androidx.core:core-ktx:1.3.2",
+        livedata         : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle",
+        material         : "com.google.android.material:material:1.2.1",
+        runtime          : "androidx.compose.runtime:runtime:$versions.compose",
+        serialization    : "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0-RC2",
+        uiTooling        : "androidx.ui:ui-tooling:$versions.compose",
+]

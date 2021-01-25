@@ -2,32 +2,26 @@ plugins {
     id("com.android.application")
     kotlin("android")
 }
-group = "com.github.wzieba.songapp"
-version = "1.0-SNAPSHOT"
 
 repositories {
-    gradlePluginPortal()
     google()
     jcenter()
-    mavenCentral()
 }
+
+apply(from = "../dependencies.gradle")
+
 dependencies {
     implementation(project(":domain"))
     implementation(project(":local"))
-    implementation("com.google.android.material:material:1.2.0")
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
-    implementation("org.kodein.di:kodein-di-framework-android-x:7.0.0")
-    implementation("androidx.compose.ui:ui:1.0.0-alpha05")
-    implementation("androidx.compose.material:material:1.0.0-alpha05")
-    implementation("androidx.ui:ui-tooling:1.0.0-alpha05")
-    implementation("androidx.compose.runtime:runtime-livedata:1.0.0-alpha05")
-    implementation("androidx.compose.foundation:foundation:1.0.0-alpha05")
-    implementation("androidx.compose.foundation:foundation-layout:1.0.0-alpha05")
-    implementation("androidx.compose.runtime:runtime:1.0.0-alpha05")
+    implementation(deps.getValue("material"))
+    implementation(deps.getValue("kodeinAndroid"))
+    implementation(deps.getValue("livedata"))
+    implementation(deps.getValue("composeLivedata"))
+    implementation(deps.getValue("uiTooling"))
+    implementation(deps.getValue("composeFoundation"))
+    implementation(deps.getValue("composeMaterial"))
 }
+
 android {
     compileSdkVersion(29)
     defaultConfig {
