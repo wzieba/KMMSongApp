@@ -13,20 +13,6 @@ jobs:
           fetch-depth: 0
       - name: Expose git commit data
         uses: rlespinasse/git-commit-data-action@v1.x
-      - name: Print git commit data
-        run: |
-          echo "Get author info"
-          echo " - ${{ env.GIT_COMMIT_AUTHOR }}"
-          echo " - ${{ env.GIT_COMMIT_AUTHOR_NAME }}"
-          echo " - ${{ env.GIT_COMMIT_AUTHOR_EMAIL }}"
-          echo "Get committer info"
-          echo " - ${{ env.GIT_COMMIT_COMMITTER }}"
-          echo " - ${{ env.GIT_COMMIT_COMMITTER_NAME }}"
-          echo " - ${{ env.GIT_COMMIT_COMMITTER_EMAIL }}"
-          echo "Get message info"
-          echo " - ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}"
-          echo " - ${{ env.GIT_COMMIT_MESSAGE_SUBJECT_SANITIZED }}"
-          echo " - ${{ env.GIT_COMMIT_MESSAGE_BODY }}"
       - uses: wagoid/commitlint-github-action@v2
         if: ${{ env.GIT_COMMIT_AUTHOR_NAME != 'dependabot[bot]' }}
 
@@ -41,11 +27,11 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-      - name: set up JDK 1.8
+      - name: set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
-      - name: build 
+          java-version: 11
+      - name: build
         run: ./gradlew :androidApp:buildDebug
       - name: test
         run: ./gradlew test
@@ -61,6 +47,10 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
       - name: Kotlin/Native unit tests
         run: ./gradlew iosX64Test
       - name: build and test
