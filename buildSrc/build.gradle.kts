@@ -18,3 +18,12 @@ dependencies {
     implementation(deps.getValue("kgp"))
     implementation(deps.getValue("agp"))
 }
+
+gradlePlugin {
+    plugins {
+        create("multiplatformPlugin"){
+            id = "multiplatform"
+            implementationClass = "MultiplatformPlugin"
+        }
+    }
+}

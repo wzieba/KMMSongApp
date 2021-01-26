@@ -8,7 +8,7 @@ ext.versions = [
 ]
 
 ext.libraries = [
-        agp              : "com.android.tools.build:gradle:4.2.0-beta03",
+        agp              : "com.android.tools.build:gradle:7.0.0-alpha04",
         appcompat        : "androidx.appcompat:appcompat:1.2.0",
         composeFoundation: "androidx.compose.foundation:foundation:$versions.compose",
         composeLayout    : "androidx.compose.foundation:foundation-layout:$versions.compose",
