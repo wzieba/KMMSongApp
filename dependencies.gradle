@@ -27,6 +27,6 @@ ext.libraries = [
         livedata         : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle",
         material         : "com.google.android.material:material:1.2.1",
         runtime          : "androidx.compose.runtime:runtime:$versions.compose",
-        serialization    : "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1",
+        serialization    : "org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1",
         uiTooling        : "androidx.ui:ui-tooling:$versions.compose",
 ]
