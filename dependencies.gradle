@@ -3,7 +3,7 @@ ext.versions = [
         coroutines: "1.4.1-native-mt",
         junit     : "4.13.1",
         kodein    : "7.1.0",
-        kotlin    : "1.4.21-2",
+        kotlin    : "1.5.20",
         lifecycle : "2.2.0",
 ]
 
